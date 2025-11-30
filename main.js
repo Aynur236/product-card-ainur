@@ -49,11 +49,11 @@ function outputConsoleLog(message) {
 // Задание №6 вывод в консоль заголовка страницы
 
 const pageTitleConsoleLog = document.querySelector('.page-title-text');
-pageTitleConsoleLog.addEventListener('mouseover', () => console.log(pageTitleConsoleLog))
+pageTitleConsoleLog.addEventListener('mouseover', () => console.log(pageTitleConsoleLog.textContent))
 
 // Задание №7 добавление кнопку, меняющую свой цвет
 
 const switchColorBtn = document.getElementById('switch-color-btn')
 switchColorBtn.addEventListener('click', () => {
-  switchColorBtn.classList.toggle('btn-color')
+  switchColorBtn.classList.toggle('bg-color')
 })
