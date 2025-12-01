@@ -55,5 +55,5 @@ pageTitleConsoleLog.addEventListener('mouseover', () => console.log(pageTitleCon
 
 const switchColorBtn = document.getElementById('switch-color-btn')
 switchColorBtn.addEventListener('click', () => {
-  switchColorBtn.classList.toggle('bg-color')
+  switchColorBtn.classList.toggle('bg-color-light-blue')
 })
