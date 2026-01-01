@@ -1,10 +1,10 @@
 // 3. Создать функцию, которая принимает 2 параметра: город и температуру и выводит сообщение в консоль "Сейчас в X температура  — Y градусов по Цельсию"
 
-function getInfo(x, y) {
+function getWeatherInfo(x, y) {
   console.log('Сейчас в', x, 'температура -', y, 'по Цельсицю')
 }
 
-info('Казань', 25)
+getWeatherInfo('Казань', 25)
 
 
 // 4. Создать переменную, которая хранит внутри себя скорость света (гуглим). 
@@ -13,14 +13,14 @@ info('Казань', 25)
 // "Сверхсветовая скорость", если ниже — "Субсветовая  скорость"? 
 // если равна — "Скорость света"
 
-const lightSpeed = 299792458
+const LIGHT_SPEED = 299792458
 
 function isLightSpeed(speed) {
-  if (speed > lightSpeed) {
+  if (speed > LIGHT_SPEED) {
     console.log('Свверхсветовая скорость')
   }
 
-  if (speed < lightSpeed) {
+  if (speed < LIGHT_SPEED) {
     console.log('Субсветовая скорость')
   }
   
@@ -28,7 +28,7 @@ function isLightSpeed(speed) {
     console.log('Не передано значение')
   }
 
-  if (speed == lightSpeed) {
+  if (speed == LIGHT_SPEED) {
     console.log('Световая скорость')
   }
 }
@@ -47,7 +47,7 @@ isLightSpeed()
 const product = 'Сырок'
 const price = 67
 
-function myBudget(x) {
+function calculateBudget(x) {
   const difference = price - x
 
   if (x >= price) {
@@ -59,4 +59,4 @@ function myBudget(x) {
   }
 }
 
-myBudget()
+calculateBudget(90)
