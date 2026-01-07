@@ -23,15 +23,15 @@ carInfo = {
   gearbox: 'Automatic'
 }
 
-carInfo.owner = userInfo.name
+carInfo.owner = userInfo
 
 // 5. Напишите функцию, которая будет проверять 
 // наличие свойства "максимальная скорость". 
 // Если оно уже есть - прекращает выполннение
 
-function checkMaxSpeed(obj) {
-  if (!('max_speed' in obj)) {
-    carInfo.max_speed = '240 км/ч'
+function hasMaxSpeed(obj) {
+  if (!('maxSpeed' in obj)) {
+    carInfo.maxSpeed = '240 км/ч'
     console.log('Максимальная скорость была добавлена')   
   } else {
     return
@@ -39,19 +39,19 @@ function checkMaxSpeed(obj) {
   return carInfo
 }
 
-checkMaxSpeed(carInfo)
+hasMaxSpeed(carInfo)
 
 console.log(carInfo)
 
 // 6. Напишите функцию, которая принимает первым аргументом объект,
 // а вторым его свойство, которое нужно вывести и выводит его
 
-function outputProperty(obj, key) {
+function getObjProperty(obj, key) {
   const value = obj[key]
   return value
 }
 
-console.log(outputProperty(userInfo, 'name'))
+console.log(getObjProperty(userInfo, 'name'))
 
 // 7. Создайте массив, который содержит названия продуктов(просто строки)
 
@@ -61,72 +61,71 @@ productList = ['Яблоко', 'Молоко', 'Мандарин', 'Апельс
 // книги(название, автор, год выпуска, цвет обложки, жанр)
 // После, добавить еще одну книгу в конец массива с помощью метода Х
 
-const bookNumberOne = {
-  name: 'Горе от ума',
-  author: 'А.С. Грибоедов',
-  year_of_manufacture: 1828,
-  cover_color: 'Золотой',
-  genre: 'Сатира'
-}
+bookList = [
+  {
+    name: 'Горе от ума',
+    author: 'А.С. Грибоедов',
+    year_of_manufacture: 1828,
+    cover_color: 'Золотой',
+    genre: 'Сатира'
+  },
 
-const bookNumberTwo = {
-  name: 'Левша',
-  author: 'Н.С. Лесков',
-  year_of_manufacture: 1881,
-  cover_color: 'Красно-сине-золотой',
-  genre: 'Сказ'
-}
+  {
+    name: 'Левша',
+    author: 'Н.С. Лесков',
+    year_of_manufacture: 1881,
+    cover_color: 'Красно-сине-золотой',
+    genre: 'Сказ'
+  },
 
-const bookNumberThree = {
-  name: 'Война и мир',
-  author: 'Л.В. Толстой',
-  year_of_manufacture: 1869,
-  cover_color: 'Коричневый',
-  genre: 'Роман-эпопея'
-}
+  {
+    name: 'Война и мир',
+    author: 'Л.В. Толстой',
+    year_of_manufacture: 1869,
+    cover_color: 'Коричневый',
+    genre: 'Роман-эпопея'
+  }
+]
+console.log(bookList)
 
-const bookNumberFour = {
+bookList.push({
   name: 'Преступление и наказание',
   author: 'Ф.М. Достоевский',
   year_of_manufacture: 1866,
   cover_color: 'Коричнево-золотой',
   genre: 'Детективный роман'
-}
+})
 
-bookList = [bookNumberOne, bookNumberTwo, bookNumberThree]
-console.log(bookList)
-
-bookList.push(bookNumberFour)
 console.log(bookList)
 
 // 9. Создать еще один массив, состоящих из тех же книг,
 // но относящийся к определенной вселенной. Объедините эти 2 массива в один
 
-const lovecraftBookOne = {
-  name: 'Азатот',
-  author: 'Г.В. Лавкрафт',
-  year_of_manufacture: 1938,
-  cover_color: 'Темно-синий',
-  genre: 'Фантастика'
-}
+lovecraftList = [
+  {
+    name: 'Азатот',
+    author: 'Г.В. Лавкрафт',
+    year_of_manufacture: 1938,
+    cover_color: 'Темно-синий',
+    genre: 'Фантастика'
+  },
 
-const lovecraftBookTwo = {
-  name: 'Безымянный город',
-  author: 'Г.В. Лавкрафт',
-  year_of_manufacture: 1921,
-  cover_color: 'Песочно-коричневый',
-  genre: 'Мистический хоррор'
-}
+  {
+    name: 'Безымянный город',
+    author: 'Г.В. Лавкрафт',
+    year_of_manufacture: 1921,
+    cover_color: 'Песочно-коричневый',
+    genre: 'Мистический хоррор'
+  },
 
-const lovecraftBookThree = {
-  name: 'Зов Ктулху',
-  author: 'Г.В. Лавкрафт',
-  year_of_manufacture: 1928,
-  cover_color: 'Темно-зеленый',
-  genre: 'Космический ужас'
-}
-
-lovecraftList = [lovecraftBookOne, lovecraftBookTwo, lovecraftBookThree]
+  {
+    name: 'Зов Ктулху',
+    author: 'Г.В. Лавкрафт',
+    year_of_manufacture: 1928,
+    cover_color: 'Темно-зеленый',
+    genre: 'Космический ужас'
+  }
+]
 
 const fullList = [...bookList, ...lovecraftList]
 console.log(fullList)
@@ -136,11 +135,11 @@ console.log(fullList)
 // и в зависимости от года выпуска книги, устанавливаем True или False.
 // Если книга раньше 1900-х, то True, если позже, то False
 
-function checkRarity(bookArray) {
+function addRarity(bookArray) {
   return bookArray.map(fullList => {
     fullList.isRare = fullList.year_of_manufacture < 1900
     return fullList
   })
 }
 
-console.log(checkRarity(fullList))
+console.log(addRarity(fullList))
