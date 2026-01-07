@@ -66,7 +66,7 @@ bookList = [
     name: 'Горе от ума',
     author: 'А.С. Грибоедов',
     year_of_manufacture: 1828,
-    cover_color: 'Золотой',
+    coverColor: 'Золотой',
     genre: 'Сатира'
   },
 
@@ -74,7 +74,7 @@ bookList = [
     name: 'Левша',
     author: 'Н.С. Лесков',
     year_of_manufacture: 1881,
-    cover_color: 'Красно-сине-золотой',
+    coverColor: 'Красно-сине-золотой',
     genre: 'Сказ'
   },
 
@@ -82,7 +82,7 @@ bookList = [
     name: 'Война и мир',
     author: 'Л.В. Толстой',
     year_of_manufacture: 1869,
-    cover_color: 'Коричневый',
+    coverColor: 'Коричневый',
     genre: 'Роман-эпопея'
   }
 ]
@@ -92,7 +92,7 @@ bookList.push({
   name: 'Преступление и наказание',
   author: 'Ф.М. Достоевский',
   year_of_manufacture: 1866,
-  cover_color: 'Коричнево-золотой',
+  coverColor: 'Коричнево-золотой',
   genre: 'Детективный роман'
 })
 
@@ -106,7 +106,7 @@ lovecraftList = [
     name: 'Азатот',
     author: 'Г.В. Лавкрафт',
     year_of_manufacture: 1938,
-    cover_color: 'Темно-синий',
+    coverColor: 'Темно-синий',
     genre: 'Фантастика'
   },
 
@@ -114,7 +114,7 @@ lovecraftList = [
     name: 'Безымянный город',
     author: 'Г.В. Лавкрафт',
     year_of_manufacture: 1921,
-    cover_color: 'Песочно-коричневый',
+    coverColor: 'Песочно-коричневый',
     genre: 'Мистический хоррор'
   },
 
@@ -122,7 +122,7 @@ lovecraftList = [
     name: 'Зов Ктулху',
     author: 'Г.В. Лавкрафт',
     year_of_manufacture: 1928,
-    cover_color: 'Темно-зеленый',
+    coverColor: 'Темно-зеленый',
     genre: 'Космический ужас'
   }
 ]
@@ -135,11 +135,11 @@ console.log(fullList)
 // и в зависимости от года выпуска книги, устанавливаем True или False.
 // Если книга раньше 1900-х, то True, если позже, то False
 
-function addRarity(bookArray) {
+function addBookRarity(bookArray) {
   return bookArray.map(fullList => {
     fullList.isRare = fullList.year_of_manufacture < 1900
     return fullList
   })
 }
 
-console.log(addRarity(fullList))
+console.log(addBookRarity(fullList))
