@@ -32,29 +32,19 @@ console.log(usersCom)
 // 8. Перебрать массив таким образом, что бы пользователи с id меньше или равно 5
 // имели postId: 2, а те, у кого id больше 5, имели postId: 1
 
-const updatedUserPostId = socialMediaComments.map(user => {
-  if (user.id <= 5) {
-    return {
-    ...user,
-    postId: 2
-  }
-} else {
-  return {
-    ...user,
-    postId: 1
-  }
-}})
+const updatedUserPostId = socialMediaComments.map(user => ({
+  ...user,
+  postId: user.id <= 5 ? 2 : 1
+}))
 
 console.log(updatedUserPostId)
 
 // 9. Перебрать массив, что бы объекты состояли только из айди и имени
 
-const userNameAndId = socialMediaComments.map(user => {
-  return {
-    name: user.name,
-    id: user.id
-  }
-})
+const userNameAndId = socialMediaComments.map(user => ({
+  name: user.name,
+  id: user.id
+}))
 
 console.log(userNameAndId)
 
@@ -62,19 +52,10 @@ console.log(userNameAndId)
 // если длина тела сообщения (body) больше 180 символов - устанавливаем true,
 // меньше - false.
 
-const addIsInvalidProperty = socialMediaComments.map(user => {
-  if (user.body.length > 180) {
-    return {
-      ...user,
-      isInvalid: true
-    }
-  } else {
-    return {
-      ...user,
-      isInvalid: false
-    }
-  }
-})
+const addIsInvalidProperty = socialMediaComments.map(user => ({
+  ...user,
+  isInvalid: user.body.length > 180 ? true : false
+}))
 
 console.log(addIsInvalidProperty)
 
