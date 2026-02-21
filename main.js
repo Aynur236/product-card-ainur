@@ -1,22 +1,24 @@
 // Покраска всех карточек
 
-const productCards = document.querySelectorAll('.card-container');
 const changeAllColorCardBtn = document.querySelector('#change-cards-color-btn');
 const purpleColorHash = '#aa00ffff'
 const greenColorHash = '#00ff99ff'
 
 changeAllColorCardBtn.addEventListener('click', () => {
+  const productCards = document.querySelectorAll('.card-container');
   productCards.forEach((card) => card.style.backgroundColor = greenColorHash)
 })
 
 
 // Покраска первой карточки
 
-const firstProductCard = document.querySelector('.card-container');
 const changeColorFirstCardBtn = document.querySelector('#change-color-first-card-btn');
 
 changeColorFirstCardBtn.addEventListener('click', () => {
-  firstProductCard.style.backgroundColor = purpleColorHash
+  const firstProductCard = document.querySelector('.card-container');
+  if (firstProductCard) {
+    firstProductCard.style.backgroundColor = purpleColorHash
+  }
 })
 
 // Октрыть Google
