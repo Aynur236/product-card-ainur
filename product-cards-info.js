@@ -9,7 +9,7 @@ export const productCards = [
       "витамины С, А, РР, В И Е",
       "солнцезащитные компоненты"
     ],
-    price: "2 750 ₽"
+    price: 2750
   },
 
   {
@@ -22,7 +22,7 @@ export const productCards = [
       "минералы",
       "масла"
     ],
-    price: "3 500 ₽"
+    price: 3500
   },
 
   {
@@ -35,7 +35,7 @@ export const productCards = [
       "витамины С, А, РР, В И Е",
       "солнцезащитные компоненты"
     ],
-    price: "1 650 ₽"
+    price: 1650
   },
   
   {
@@ -48,7 +48,7 @@ export const productCards = [
       "минералы",
       "масла"
     ],
-    price: "4 750 ₽"
+    price: 4750
   },
 
   {
@@ -61,6 +61,6 @@ export const productCards = [
       "минералы",
       "масла"
     ],
-    price: "7 520 ₽"
+    price: 7520
   },
 ];
