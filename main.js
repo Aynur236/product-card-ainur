@@ -43,8 +43,8 @@ function outputConsoleLog(message) {
 
 // Задание №6 вывод в консоль заголовка страницы
 
-const pageTitleConsoleLog = document.querySelector('.page-title-text');
-pageTitleConsoleLog.addEventListener('mouseover', () => console.log(pageTitleConsoleLog.textContent));
+const pageHeader = document.querySelector('.page-title-text');
+pageHeader.addEventListener('mouseover', () => console.log(pageHeader.textContent));
 
 // Задание №7 добавление кнопку, меняющую свой цвет
 
