@@ -14,11 +14,13 @@
   <header class="page-header">
     <h1 class="page-title-text">Выбери свой продукт</h1>
   </header>
-  <button id="change-cards-color-btn">Сменить цвет всех карточек</button>
-  <button id="change-color-first-card-btn">Сменить цвет первой карточки</button>
-  <button id="open-google-btn">Открыть страницу Google.com</button>
-  <button id="output-console-btn">Вывести сообщение в консоль</button>
-  <button id="switch-color-btn">Я меняю свой цвет</button>
+  <div class="buttons-container">
+    <button class="buttons-container-item" id="change-cards-color-btn">Сменить цвет всех карточек</button>
+    <button class="buttons-container-item" id="change-color-first-card-btn">Сменить цвет первой карточки</button>
+    <button class="buttons-container-item" id="open-google-btn">Открыть страницу Google.com</button>
+    <button class="buttons-container-item" id="output-console-btn">Вывести сообщение в консоль</button>
+    <button class="buttons-container-item" id="switch-color-btn">Я меняю свой цвет</button>
+  </div>
   
   <ul id="product-cards-list">
     <template id="product-card-template">
@@ -40,10 +42,95 @@
     </template>
   </ul>
 
+  <!-- 5. Создать кнопку "Регистрация". Создать модальное окно, используя классы "modal, modal-showed". 
+  Логика такая: при нажатии на кнопку у нас открывается модальное окно путем добавления modal-showed к div с классом modal. 
+  Не забываем добавить кнопку для закрытия модалки (крестик в углу).  
+  Важные правила создания модалки:
+  1) Задний фон должен быть затемнён, но не полностью черный (Создаем класс overlay, который будет затемнять всю страницу)
+  2) Модальное окно находиться ровно по центру страницы, независимо от масштаба -->
+  <button id="open-modal-btn">Открыть модальное окно</button>
+  <div id="registration-modal" class="modal">
+    <div class="overlay"></div> 
+    <div class="modal-content">
+      <h3 class="registration-modal-title">Регистрация</h3>
+      <!-- 6. Создать форму для регистрации внутри модального окна. 
+      Она должна содержать поля: имя, фамилия, дата рождения, логин, пароль, повторение пароля. 
+      Используйте <label> для того, что бы указать пользователю, какое поле за что отвечает. 
+      Также важно использовать placeholder (обо всем этом можно будет почитать в документации в конце поста) 
+      Разрешается добавить поля на ваше усмотрение. Все поля должны иметь валидацию. -->
+      <form class="registration-modal-form">
+        <label for="name" class="registration-modal-form-item">Имя</label>
+        <input type="text" id="name" placeholder="Имя" name="name" class="registration-modal-form-input" required>
+        <label for="surname" class="registration-modal-form-item">Фамилия</label>
+        <input type="text" id="surname" placeholder="Фамилия" name="surname" class="registration-modal-form-input" required>
+        <label for="date-of-birth" class="registration-modal-form-item">Дата рождения</label>
+        <input type="date" id="date-of-birth" placeholder="Дата рождения" name="date-of-birth" class="registration-modal-form-input" required>
+        <label for="login" class="registration-modal-form-item">Логин</label>
+        <input type="text" id="login" placeholder="Логин" name="login" class="registration-modal-form-input" required>
+        <label for="password" class="registration-modal-form-item">Пароль</label>
+        <input type="password" id="password" placeholder="Пароль" name="password" class="registration-modal-form-input" required>
+        <label for="password-repeat" class="registration-modal-form-item">Повторите пароль</label>
+        <input type="password" id="password-repeat" placeholder="Повторите пароль" name="password-repeat" class="registration-modal-form-input" required>
+        <button type="submit" class="registration-modal-form-btn">Зарегистрироваться</button>
+      </form>
+      <button id="close-modal-btn">X</button>
+    </div>
+  </div>
+
+  <!-- 3. Верстка футера используя семантические теги (footer, nav и т.д.) -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <h3 class="footer-info-title">Product Cards</h3>
+        <span class="footer-info-description">У нас самые лучшие продукты для кожи</span>
+        <div class="footer-social-links">
+          <img class="tg-icon" src="/svg/tg-icon.svg" alt="Телеграм">
+          <img class="vk-icon" src="/svg/vk-icon.svg" alt="ВКонтакте">
+        </div>
+      </div>
+      <div class="footer-newsletter">
+        <h3 class="footer-newsletter-title">Подпишись на наши акции:</h3>
+        <form class="footer-newsletter-form">
+          <input 
+            name="email"
+            type="email" 
+            class="footer-newsletter-input" 
+            placeholder="Введите Email..."
+            required
+          >
+          <button class="footer-newsletter-btn">Подписаться</button>
+        </form>
+      </div>
+      <div class="footer-links">
+        <span class="footer-links-title">Быстрые ссылки</span>
+        <nav class="footer-links-nav">
+          <ul class="footer-links-nav-list">
+            <li class="footer-links-nav-list-item">
+              <a href="" class="footer-links-nav-list-item-link">Главная</a>
+            </li>
+            <li class="footer-links-nav-list-item">
+              <a href="" class="footer-links-nav-list-item-link">Магазин</a>
+            </li>
+            <li class="footer-links-nav-list-item">
+              <a href="" class="footer-links-nav-list-item-link">Контакты</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="footer-copyright-line"></div>
+      <span class="footer-copyright-text">www.product-cards.com©all right reserve</span>
+    </div>
+  </footer>
+
   <script src="main.js"></script>
   <script src="homework-5.js"></script>
   <script src="homework-6.js"></script>
   <script type="module" src="homework-7.js"></script>
   <script type="module" src="homework-8.js"></script>
+  <script type="module" src="homework-9.js"></script>
 </body>
+
+
 </html>
