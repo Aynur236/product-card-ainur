@@ -30,7 +30,7 @@ closeModalBtn.addEventListener('click', () => {
 // Если регистрация успешна - выводим значения формы в лог, как в задании №4. 
 // Дополнительно мы должны добавить к этому объекту свойство createdOn и указать туда время создания (используем сущность new Date()). 
 // Также создайте внешнюю переменную user и присвойте ей этот объект. После успешной регистрации - модалка должны закрыться. 
-let user
+let user = [];
 
 const registrationModalForm = document.querySelector('.registration-modal-form');
 registrationModalForm.addEventListener('submit', (event) => {
