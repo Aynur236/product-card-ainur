@@ -22,7 +22,7 @@ openModalBtn.addEventListener('click', () => {
 });
 
 closeModalBtn.addEventListener('click', () => {
-  modalContent.classList.remove('modal-showed')
+  modalContent.classList.remove('modal-showed');
 })
 
 // 6. Если пользователь ввел два разных пароля или форма невалидна (используем метод checkValidity()) - мы должны предупредить его о том, 
