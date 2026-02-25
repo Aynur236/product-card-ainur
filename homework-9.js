@@ -50,4 +50,4 @@ registrationModalForm.addEventListener('submit', (event) => {
   user = {...userData, createdOn};
   console.log(user);
   modalContent.classList.remove('modal-showed');
-})
+});
