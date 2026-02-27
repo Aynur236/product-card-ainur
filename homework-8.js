@@ -4,7 +4,7 @@ const productCardTemplate = document.getElementById("product-card-template");
 const nameAndDescription = productCards.reduce((acc, productCards) => {
   const newObj = {
     [productCards.name]: productCards.description
-  }
+  };
   acc.push(newObj);
   return acc;
 }, []);
@@ -24,7 +24,7 @@ function getCardsAmount() {
 
 function renderProductCards(productCards) {
   const productCardsList = document.getElementById("product-cards-list");
-  productCardsList.innerHTML = ""
+  productCardsList.innerHTML = "";
   const fragment = document.createDocumentFragment();
   productCards.forEach(productCard => {
     const productCardClone = productCardTemplate.content.cloneNode(true);

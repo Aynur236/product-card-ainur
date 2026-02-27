@@ -1,6 +1,6 @@
 // 3.Создайте объект на основе ваших данных.
 
-userInfo = {
+export const userInfo = {
   name: 'Айнур',
   surname: 'Ряжапов',
   mail: 'yt.frost@mail.ru',
@@ -15,7 +15,7 @@ userInfo = {
 // 4.Создайте объект, который будет хранить данные об автомобиле
 // и добавьте свойсто владелец
 
-carInfo = {
+export const carInfo = {
   brand: 'Toyota',
   model: 'RAV4',
   year: '2004',
@@ -23,45 +23,45 @@ carInfo = {
   gearbox: 'Automatic'
 }
 
-carInfo.owner = userInfo
+carInfo.owner = userInfo;
 
 // 5. Напишите функцию, которая будет проверять 
 // наличие свойства "максимальная скорость". 
 // Если оно уже есть - прекращает выполннение
 
-function hasMaxSpeed(obj) {
+export function hasMaxSpeed(obj) {
   if (!('maxSpeed' in obj)) {
-    carInfo.maxSpeed = '240 км/ч'
-    console.log('Максимальная скорость была добавлена')   
+    carInfo.maxSpeed = '240 км/ч';
+    console.log('Максимальная скорость была добавлена');
   } else {
-    return
+    return;
   }
-  return carInfo
+  return carInfo;
 }
 
-hasMaxSpeed(carInfo)
+hasMaxSpeed(carInfo);
 
-console.log(carInfo)
+console.log(carInfo);
 
 // 6. Напишите функцию, которая принимает первым аргументом объект,
 // а вторым его свойство, которое нужно вывести и выводит его
 
-function getObjProperty(obj, key) {
-  const value = obj[key]
-  return value
+export function getObjProperty(obj, key) {
+  const value = obj[key];
+  return value;
 }
 
-console.log(getObjProperty(userInfo, 'name'))
+console.log(getObjProperty(userInfo, 'name'));
 
 // 7. Создайте массив, который содержит названия продуктов(просто строки)
 
-productList = ['Яблоко', 'Молоко', 'Мандарин', 'Апельсин', 'Шоколад']
+export const productList = ['Яблоко', 'Молоко', 'Мандарин', 'Апельсин', 'Шоколад'];
 
 // 8. Создать массив из объектов, где объектами являются 
 // книги(название, автор, год выпуска, цвет обложки, жанр)
 // После, добавить еще одну книгу в конец массива с помощью метода Х
 
-bookList = [
+export const bookList = [
   {
     name: 'Горе от ума',
     author: 'А.С. Грибоедов',
@@ -86,7 +86,7 @@ bookList = [
     genre: 'Роман-эпопея'
   }
 ]
-console.log(bookList)
+console.log(bookList);
 
 bookList.push({
   name: 'Преступление и наказание',
@@ -96,12 +96,12 @@ bookList.push({
   genre: 'Детективный роман'
 })
 
-console.log(bookList)
+console.log(bookList);
 
 // 9. Создать еще один массив, состоящих из тех же книг,
 // но относящийся к определенной вселенной. Объедините эти 2 массива в один
 
-lovecraftList = [
+export const lovecraftList = [
   {
     name: 'Азатот',
     author: 'Г.В. Лавкрафт',
@@ -127,19 +127,19 @@ lovecraftList = [
   }
 ]
 
-const fullList = [...bookList, ...lovecraftList]
-console.log(fullList)
+export const fullList = [...bookList, ...lovecraftList];
+console.log(fullList);
 
 // Написать функцию, которая принимает массив сущностей с задания №9.
 // Добавляем новое свойство для объекта "isRare"
 // и в зависимости от года выпуска книги, устанавливаем True или False.
 // Если книга раньше 1900-х, то True, если позже, то False
 
-function addBookRarity(bookArray) {
+export function addBookRarity(bookArray) {
   return bookArray.map(fullList => {
-    fullList.isRare = fullList.year_of_manufacture < 1900
-    return fullList
+    fullList.isRare = fullList.year_of_manufacture < 1900;
+    return fullList;
   })
 }
 
-console.log(addBookRarity(fullList))
+console.log(addBookRarity(fullList));
