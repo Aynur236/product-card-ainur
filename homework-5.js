@@ -1,10 +1,10 @@
 // 3. Создать функцию, которая принимает 2 параметра: город и температуру и выводит сообщение в консоль "Сейчас в X температура  — Y градусов по Цельсию"
 
 function outputWeatherInfo(x, y) {
-  console.log('Сейчас в', x, 'температура -', y, 'по Цельсицю')
+  console.log('Сейчас в', x, 'температура -', y, 'по Цельсицю');
 }
 
-outputWeatherInfo('Казань', 25)
+outputWeatherInfo('Казань', 25);
 
 
 // 4. Создать переменную, которая хранит внутри себя скорость света (гуглим). 
@@ -13,27 +13,27 @@ outputWeatherInfo('Казань', 25)
 // "Сверхсветовая скорость", если ниже — "Субсветовая  скорость"? 
 // если равна — "Скорость света"
 
-const LIGHT_SPEED = 299792458
+const LIGHT_SPEED = 299792458;
 
 function isLightSpeed(speed) {
   if (speed > LIGHT_SPEED) {
-    console.log('Свверхсветовая скорость')
+    console.log('Свверхсветовая скорость');
   }
 
   if (speed < LIGHT_SPEED) {
-    console.log('Субсветовая скорость')
+    console.log('Субсветовая скорость');
   }
   
   if (speed == null) {
-    console.log('Не передано значение')
+    console.log('Не передано значение');
   }
 
   if (speed == LIGHT_SPEED) {
-    console.log('Световая скорость')
+    console.log('Световая скорость');
   }
 }
 
-isLightSpeed()
+isLightSpeed();
 
 
 // 5. Создать переменную №1, которая содержит продукт и переменную №2, 
@@ -44,19 +44,19 @@ isLightSpeed()
 // если нет - обсчитываем разницу и выводим лог "Вам не хватает X$, 
 // пополните баланс".  То-есть с помощью функции мы пытаемся приобрести товар.
 
-const product = 'Сырок'
-const price = 67
+const product = 'Сырок';
+const price = 67;
 
 function canBuy(x) {
-  const difference = price - x
+  const difference = price - x;
 
   if (x >= price) {
-    console.log(product, 'приобретён. Спасибо за покупку!')
+    console.log(product, 'приобретён. Спасибо за покупку!');
   }
 
   else {
-    console.log('Вам не хватает', difference + '$,', 'пополните баланс')
+    console.log('Вам не хватает', difference + '$,', 'пополните баланс');
   }
 }
 
-canBuy(90)
+canBuy(90);

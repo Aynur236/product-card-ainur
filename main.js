@@ -1,54 +1,41 @@
-// Покраска всех карточек
+import './homework-4.js';
+import './homework-5.js';
+import './homework-6.js';
+import './homework-7.js';
+import './homework-8.js';
+import './homework-9.js';
+import './games.js';
+import { Modal } from './Modal.js';
+import { Form } from './Form.js';
 
-const changeAllColorCardBtn = document.querySelector('#change-cards-color-btn');
-const purpleColorHash = '#aa00ffff'
-const greenColorHash = '#00ff99ff'
+// 5. Создать кнопку "Регистрация". Создать модальное окно, используя классы "modal, modal-showed". 
+// Логика такая: при нажатии на кнопку у нас открывается модальное окно путем добавления modal-showed к div с классом modal. 
+// Не забываем добавить кнопку для закрытия модалки (крестик в углу).
+const regModal = new Modal('registration-modal');
+const openModalBtn = document.getElementById('open-modal-btn');
+openModalBtn.addEventListener('click', () => regModal.open());
 
-changeAllColorCardBtn.addEventListener('click', () => {
-  const productCards = document.querySelectorAll('.card-container');
-  productCards.forEach((card) => card.style.backgroundColor = greenColorHash);
-})
-
-// Покраска первой карточки
-
-const changeColorFirstCardBtn = document.querySelector('#change-color-first-card-btn');
-changeColorFirstCardBtn.addEventListener('click', () => {
-  const firstProductCard = document.querySelector('.card-container');
-  if (firstProductCard) {
-    firstProductCard.style.backgroundColor = purpleColorHash
+// 6. Если пользователь ввел два разных пароля или форма невалидна (используем метод checkValidity()) - мы должны предупредить его о том, 
+// что регистрация отклонена. 
+// Если регистрация успешна - выводим значения формы в лог, как в задании №4. 
+// Дополнительно мы должны добавить к этому объекту свойство createdOn и указать туда время создания (используем сущность new Date()). 
+// Также создайте внешнюю переменную user и присвойте ей этот объект. После успешной регистрации - модалка должны закрыться. 
+let user = {};
+const regForm = new Form('registration-modal-form');
+const modalForm = document.getElementById('registration-modal-form');
+modalForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (!regForm.isValid()) {
+    alert('Заполните все поля!');
+    return;
   }
-})
-
-// Октрыть Google
-
-const openGoogleBtn = document.querySelector('#open-google-btn');
-openGoogleBtn.addEventListener('click', openGoogle);
-function openGoogle() {
-  const answer = confirm('Вы действительно хотите открыть Google.com');
-  if (answer === true) {
-    window.open('https://google.com')
-  } else {
-    return
+  const userData = regForm.getValues();
+  if (userData.password !== userData['password-repeat']) {
+    alert('Пароли не совпадают');
+    return;
   }
-}
-
-// Вывод console.log
-
-const outputLogBtn = document.querySelector('#output-console-btn');
-outputLogBtn.addEventListener('click', () => outputConsoleLog('ДЗ №4'));
-function outputConsoleLog(message) {
-  alert(message)
-  console.log(message)
-}
-
-// Задание №6 вывод в консоль заголовка страницы
-
-const pageHeader = document.querySelector('.page-title-text');
-pageHeader.addEventListener('mouseover', () => console.log(pageHeader.textContent));
-
-// Задание №7 добавление кнопку, меняющую свой цвет
-
-const switchColorBtn = document.getElementById('switch-color-btn');
-switchColorBtn.addEventListener('click', () => {
-  switchColorBtn.classList.toggle('bg-color-light-blue');
-})
+  user = {...userData, createdOn: new Date()};
+  console.log(user);
+  regForm.reset();
+  regModal.close();
+});
