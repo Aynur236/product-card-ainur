@@ -7,6 +7,8 @@ import './homework-9.js';
 import './games.js';
 import { Modal } from './Modal.js';
 import { Form } from './Form.js';
+import { Coffee, Tea, Citrus } from './Drinks.js';
+import { Cafe } from './Cafe.js';
 
 // 5. Создать кнопку "Регистрация". Создать модальное окно, используя классы "modal, modal-showed". 
 // Логика такая: при нажатии на кнопку у нас открывается модальное окно путем добавления modal-showed к div с классом modal. 
@@ -39,3 +41,17 @@ modalForm.addEventListener('submit', (event) => {
   regForm.reset();
   regModal.close();
 });
+
+const myCafe = new Cafe('Дом Марьям', 'г. Астана');
+const order_1 = new Coffee('Марьянте', 'большой', 350, 'Кокосовое', 'Арабика');
+const order_2 = new Tea('Марьячай', 'маленький', 300, 'Зеленый');
+const order_3 = new Citrus('Марьяцитрус', 'средний', 250, 'Лимон');
+myCafe.orderDrink(order_1);
+console.log('-------------------');
+myCafe.orderDrink(order_2);
+console.log('-------------------');
+myCafe.orderDrink(order_3);
+console.log(order_1.getDrinkInfo());
+console.log(order_2.getDrinkInfo());
+console.log(order_3.getDrinkInfo());
+console.log(myCafe.getCafeInfo());
