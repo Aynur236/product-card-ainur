@@ -7,11 +7,7 @@ export class Modal {
     this.#initOpen(buttonId);
   }
 
-  #handleCloseClick = () => {
-    this.close();
-  };
-
-  #handleOverlayClick = () => {
+  #handleClose = () => {
     if (this.isOpen()) {
       this.close();
     }
@@ -41,18 +37,18 @@ export class Modal {
   };
 
   #initClose() {
-    this.closeButton.addEventListener('click', this.#handleCloseClick);
+    this.closeButton.addEventListener('click', this.#handleClose);
 
     if (this.shouldCloseOnOverlay) {
-      this.overlay.addEventListener('click', this.#handleOverlayClick);
+      this.overlay.addEventListener('click', this.#handleClose);
     }
   }
 
   #removeCloseListeners() {
-    this.closeButton.removeEventListener('click', this.#handleCloseClick);
+    this.closeButton.removeEventListener('click', this.#handleClose);
 
     if (this.shouldCloseOnOverlay) {
-      this.overlay.removeEventListener('click', this.#handleOverlayClick);
+      this.overlay.removeEventListener('click', this.#handleClose);
     }
   }
 }
