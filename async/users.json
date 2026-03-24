@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Ainur",
+      "surname": "Riazhapov",
+      "age": 20,
+      "email": "[EMAIL_ADDRESS]"
+    },
+    {
+      "id": 2,
+      "name": "Vlad",
+      "surname": "Babenko",
+      "age": 21,
+      "email": "[EMAIL_ADDRESS]"
+    },
+    {
+      "id": 3,
+      "name": "Akmal",
+      "surname": "Yusupov",
+      "age": 30,
+      "email": "[EMAIL_ADDRESS]"
+    }
+  ]
+}
