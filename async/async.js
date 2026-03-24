@@ -1,6 +1,7 @@
 const usersContainer = document.getElementById('users-container');
 const loadUsersButton = document.getElementById('load-users-button');
 const deleteUsersButton = document.getElementById('delete-users-button');
+const loadingStatus = document.getElementById('loading-status');
 
 async function loadUsers() {
   const localData = localStorage.getItem('users');
@@ -32,47 +33,49 @@ loadUsers();
 
 function renderUsers(usersArray) {
   usersContainer.innerHTML = '';
+  loadingStatus.style.display = 'none';
   usersArray.forEach(user => {
-    usersContainer.innerHTML += `
-      <div class="user-card" style="border: 1px solid black; margin: 10px; padding: 10px;">
-        <h3>${user.name} ${user.surname}</h3>
-        <p>Возраст: ${user.age}</p>
-        <p>Email: ${user.email}</p>
-        <button class="delete-user-btn" data-id="${user.id}">Удалить</button>
-      </div>
-    `;
+    const userCard = document.createElement('div');
+    userCard.classList.add('user-card');
+    userCard.style.cssText = 'border: 1px solid black; padding: 10px; margin: 10px;'
+    const title = document.createElement('h3');
+    title.textContent = `${user.name} ${user.surname}`;
+    const email = document.createElement('p');
+    email.textContent = `Email: ${user.email}`;
+    const age = document.createElement('p');
+    age.textContent = `Возраст: ${user.age}`;
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Удалить';
+    deleteBtn.classList.add('delete-user-btn');
+    deleteBtn.addEventListener('click', () => {
+      const localData = JSON.parse(localStorage.getItem('users'));
+      const filteredUsers = localData.users.filter(u => u.id !== user.id);
+      localData.users = filteredUsers
+      localStorage.setItem('users', JSON.stringify(localData));
+      renderUsers(filteredUsers);
+    });
+    userCard.append(title, email, age, deleteBtn);
+    usersContainer.append(userCard);
   });
 } 
-
-usersContainer.addEventListener('click', (event) => {
-  if (event.target.classList.contains('delete-user-btn')) {
-    const userId = event.target.getAttribute('data-id');
-    const localData = localStorage.getItem('users');
-    const parsedData = JSON.parse(localData);
-    let usersArray = parsedData.users;
-    usersArray = usersArray.filter(user => user.id != userId);
-    parsedData.users = usersArray;
-    localStorage.setItem('users', JSON.stringify(parsedData));
-    renderUsers(usersArray);
-  }
-});
 
 deleteUsersButton.addEventListener('click', () => {
   localStorage.removeItem('users');
   usersContainer.innerHTML = '';
 });
 
-loadUsersButton.addEventListener('click', () => {
-  const localData = localStorage.getItem('users');
-  if (localData) {
-    const parsedData = JSON.parse(localData);
-    if (parsedData.users.length === 3) {
+loadUsersButton.addEventListener('click', async () => {
+  const localData = JSON.parse(localStorage.getItem('users'));
+  try {
+    const response = await fetch('users.json');
+    const originalData = await response.json();
+    if (localData && localData.users.length === originalData.users.length) {
       alert('Все пользователи уже отображены!');
     } else {
       localStorage.removeItem('users');
       loadUsers();
     }
-  } else {
-    loadUsers();
+  } catch (error) {
+    console.error('Ошибка при проверке базы:', error);
   }
 });

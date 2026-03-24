@@ -5,21 +5,21 @@
       "name": "Ainur",
       "surname": "Riazhapov",
       "age": 20,
-      "email": "[EMAIL_ADDRESS]"
+      "email": "ainur@mail.ru"
     },
     {
       "id": 2,
       "name": "Vlad",
       "surname": "Babenko",
       "age": 21,
-      "email": "[EMAIL_ADDRESS]"
+      "email": "vlad@gmail.com"
     },
     {
       "id": 3,
       "name": "Akmal",
       "surname": "Yusupov",
       "age": 30,
-      "email": "[EMAIL_ADDRESS]"
+      "email": "akmal@yandex.ru"
     }
   ]
 }
