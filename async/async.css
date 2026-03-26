@@ -9,4 +9,35 @@
   padding: 10px;
   margin: 10px;
   background-color: #f5f5f5;
+  border: 1px solid black;
+  padding: 10px; 
+  margin: 10px;
+
+}
+
+#loading-status {
+  font-family: 'Arial', sans-serif;
+  display: none;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#load-users-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#delete-users-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
 }

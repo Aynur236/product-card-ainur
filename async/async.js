@@ -1,24 +1,36 @@
 const usersContainer = document.getElementById('users-container');
-const loadUsersButton = document.getElementById('load-users-button');
-const deleteUsersButton = document.getElementById('delete-users-button');
+const loadUsersButton = document.getElementById('load-users-btn');
+const deleteUsersButton = document.getElementById('delete-users-btn');
 const loadingStatus = document.getElementById('loading-status');
 
+function getUsersFromStorage() {
+  const data = localStorage.getItem('users');
+  return data ? JSON.parse(data) : null; 
+}
+
+function setUsersToStorage(data) {
+  localStorage.setItem('users', JSON.stringify(data));
+}
+
+async function getUsers() {
+  const response = await fetch('users.json');
+  if (!response.ok) {
+    throw new Error(`Ошибка сети: ${response.status}`);
+  }
+  return await response.json(); 
+}
+
 async function loadUsers() {
-  const localData = localStorage.getItem('users');
+  const localData = getUsersFromStorage();
   if (localData) {
-    const parsedData = JSON.parse(localData);
-    console.log('Данные из локального хранилища: ', parsedData);
-    renderUsers(parsedData.users);
+    console.log('Данные из локального хранилища: ', localData);
+    renderUsers(localData.users);
   } else {
     try {
-      const response = await fetch('users.json');
-      if (!response.ok) {
-        throw new Error(`Ошибка сети: ${response.status}`);
-      }
-      const data = await response.json();
+      const data = await getUsers();
       console.log('Данные получены сервером: ', data);
       setTimeout(() => {
-        localStorage.setItem('users', JSON.stringify(data));
+        setUsersToStorage(data);
         console.log('Данные сохранены в локальное хранилище');
         renderUsers(data.users);
       }, 2000);
@@ -34,41 +46,47 @@ loadUsers();
 function renderUsers(usersArray) {
   usersContainer.innerHTML = '';
   loadingStatus.style.display = 'none';
+  const fragment = document.createDocumentFragment();
   usersArray.forEach(user => {
-    const userCard = document.createElement('div');
-    userCard.classList.add('user-card');
-    userCard.style.cssText = 'border: 1px solid black; padding: 10px; margin: 10px;'
-    const title = document.createElement('h3');
-    title.textContent = `${user.name} ${user.surname}`;
-    const email = document.createElement('p');
-    email.textContent = `Email: ${user.email}`;
-    const age = document.createElement('p');
-    age.textContent = `Возраст: ${user.age}`;
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'Удалить';
-    deleteBtn.classList.add('delete-user-btn');
+    const userCard = Object.assign(document.createElement('div'), {
+      className: 'user-card'
+    });
+    const deleteBtn = Object.assign(document.createElement('button'), {
+      className: 'delete-user-btn',
+      textContent: 'Удалить'
+    });
     deleteBtn.addEventListener('click', () => {
-      const localData = JSON.parse(localStorage.getItem('users'));
+      const localData = getUsersFromStorage();
       const filteredUsers = localData.users.filter(u => u.id !== user.id);
-      localData.users = filteredUsers
-      localStorage.setItem('users', JSON.stringify(localData));
+      localData.users = filteredUsers;
+      setUsersToStorage(localData);
       renderUsers(filteredUsers);
     });
-    userCard.append(title, email, age, deleteBtn);
+    userCard.append(
+      Object.assign(document.createElement('h3'), { textContent: `${user.name} ${user.surname}` }),
+      Object.assign(document.createElement('p'), { textContent: `Email: ${user.email}` }),
+      Object.assign(document.createElement('p'), { textContent: `Возраст: ${user.age}` }),
+      deleteBtn
+    );
     usersContainer.append(userCard);
   });
-} 
+}
 
 deleteUsersButton.addEventListener('click', () => {
-  localStorage.removeItem('users');
-  usersContainer.innerHTML = '';
+  const localData = getUsersFromStorage();
+  if (!localData || localData.users.length === 0) {
+    alert('Все пользователи уже удалены!');
+  } else {
+    localStorage.removeItem('users');
+    usersContainer.innerHTML = '';
+    loadingStatus.style.display = 'block';
+  }
 });
 
 loadUsersButton.addEventListener('click', async () => {
-  const localData = JSON.parse(localStorage.getItem('users'));
+  const localData = getUsersFromStorage();
   try {
-    const response = await fetch('users.json');
-    const originalData = await response.json();
+    const originalData = await getUsers();
     if (localData && localData.users.length === originalData.users.length) {
       alert('Все пользователи уже отображены!');
     } else {
